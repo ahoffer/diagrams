@@ -1,4 +1,5 @@
 @startuml
+hide footbox
 title [ anyText is like TEMPEST]
 'Full query after transformations:
 '[QueryImpl{filter=QueryImpl{filter=[ anyText is like TEMPEST ], startIndex=1, pageSize=250, requestsTotalResultsCount=true, timeoutMillis=300000, sortBy=SortByImpl{propertyName=ddf.catalog.filter.impl.PropertyNameImpl@37f67888, sortOrder=SortOrder[DESCENDING]}, properties=null}, startIndex=1, pageSize=250, requestsTotalResultsCount=true, timeoutMillis=300000, sortBy=SortByImpl{propertyName=ddf.catalog.filter.impl.PropertyNameImpl@37f67888, sortOrder=SortOrder[DESCENDING]}, properties=null} AND [[ validation-errors IS NULL ]]], startIndex=1, pageSize=250, requestsTotalResultsCount=true, timeoutMillis=300000, sortBy=SortByImpl{propertyName=ddf.catalog.filter.impl.PropertyNameImpl@37f67888, sortOrder=SortOrder[DESCENDING]}, properties=null} AND [[ metacard-tags is like resource ] OR [ metacard-tags IS NULL ]]], startIndex=1, pageSize=250, requestsTotalResultsCount=true, timeoutMillis=300000, sortBy=SortByImpl{propertyName=ddf.catalog.filter.impl.PropertyNameImpl@37f67888, sortOrder=SortOrder[DESCENDING]}, properties=null},sourceIds=<null>,isEnterprise=false]
