@@ -1,0 +1,44 @@
+@startuml
+title [ anyText is like TEMPEST]
+'Full query after transformations:
+'[QueryImpl{filter=QueryImpl{filter=[ anyText is like TEMPEST ], startIndex=1, pageSize=250, requestsTotalResultsCount=true, timeoutMillis=300000, sortBy=SortByImpl{propertyName=ddf.catalog.filter.impl.PropertyNameImpl@37f67888, sortOrder=SortOrder[DESCENDING]}, properties=null}, startIndex=1, pageSize=250, requestsTotalResultsCount=true, timeoutMillis=300000, sortBy=SortByImpl{propertyName=ddf.catalog.filter.impl.PropertyNameImpl@37f67888, sortOrder=SortOrder[DESCENDING]}, properties=null} AND [[ validation-errors IS NULL ]]], startIndex=1, pageSize=250, requestsTotalResultsCount=true, timeoutMillis=300000, sortBy=SortByImpl{propertyName=ddf.catalog.filter.impl.PropertyNameImpl@37f67888, sortOrder=SortOrder[DESCENDING]}, properties=null} AND [[ metacard-tags is like resource ] OR [ metacard-tags IS NULL ]]], startIndex=1, pageSize=250, requestsTotalResultsCount=true, timeoutMillis=300000, sortBy=SortByImpl{propertyName=ddf.catalog.filter.impl.PropertyNameImpl@37f67888, sortOrder=SortOrder[DESCENDING]}, properties=null},sourceIds=<null>,isEnterprise=false]
+
+[-> SolrCatalogProvider: getSolrQuery(QueryRequest, SolrFilterDelegate)
+
+
+participant GeotoolsFilterAdapterImpl as GeoAdapter  <<FilterAdapter>>
+SolrCatalogProvider -> GeoAdapter : «adapt» (Filter, FilterDelegate)
+'Concrete classes are (QueryImpl, SolrFilterDelegate)
+
+
+participant QueryImpl <<Filter>>
+GeoAdapter -> QueryImpl : «accept» (FilterVisitor, Object)
+'Concrete classes are (GeotoolsFilterAdapterImpl, SolrFilterDelegate)
+
+participant AndImpl <<Filter>>
+QueryImpl -> AndImpl : «accept» (FilterVisitor, Object)
+'Concrete classes are (GeotoolsFilterAdapterImpl, SolrFilterDelegate)
+
+participant GeotoolsFilterAdapterImpl as GeoVisitor <<FilterVisitor>>
+AndImpl -> GeoVisitor : «visit» (And, Object)
+'Concrete classes are AndImpl and SolrFilterDelegate
+
+participant And <<BinaryLogicOperator>>
+GeoVisitor -> And : «getChildren» : List<Filter>
+'Return list of size 2. QueryImpl and OrImpl
+
+participant child <<Filter>>
+GeoVisitor -> child : [//Iterate//] «accept» (FilterVisitor, Object)
+'Concrete classes are (GeotoolsFilterAdapterImpl, SolrFilterDelegate)
+note right
+  Additional work here.
+  The filter class **BinaryLogicAbstract**
+  composes boolean clauses which are visited
+  recursively.
+end note
+return [//Collect//] SolrQuery
+
+participant SolrFilterDelegate <<FilterDelegate<SolrQuery>>>
+GeoVisitor -> SolrFilterDelegate : «and» (List<SolrQuery>)
+[<-- SolrFilterDelegate: SolrQuery
+@enduml
