@@ -8,29 +8,24 @@ title [ anyText is like TEMPEST]
 
 
 participant GeotoolsFilterAdapterImpl as GeoAdapter  <<FilterAdapter>>
-SolrCatalogProvider -> GeoAdapter : «adapt» (Filter, FilterDelegate)
-'Concrete classes are (QueryImpl, SolrFilterDelegate)
+SolrCatalogProvider -> GeoAdapter : «adapt» (Filter, FilterDelegate)\n<color gray>(QueryImpl, SolrFilterDelegate)</color>
 
 
 participant QueryImpl <<Filter>>
-GeoAdapter -> QueryImpl : «accept» (FilterVisitor, Object)
-'Concrete classes are (GeotoolsFilterAdapterImpl, SolrFilterDelegate)
+GeoAdapter -> QueryImpl : «accept» (FilterVisitor, Object)\n<color gray>(GeotoolsFilterAdapterImpl, SolrFilterDelegate)</color>
 
 participant AndImpl <<Filter>>
-QueryImpl -> AndImpl : «accept» (FilterVisitor, Object)
-'Concrete classes are (GeotoolsFilterAdapterImpl, SolrFilterDelegate)
+QueryImpl -> AndImpl : «accept» (FilterVisitor, Object)\n<color gray>(GeotoolsFilterAdapterImpl, SolrFilterDelegate)</color>
 
 participant GeotoolsFilterAdapterImpl as GeoVisitor <<FilterVisitor>>
-AndImpl -> GeoVisitor : «visit» (And, Object)
-'Concrete classes are AndImpl and SolrFilterDelegate
+AndImpl -> GeoVisitor : «visit» (And, Object)\n<color gray>(AndImpl, SolrFilterDelegate)</color>
 
 participant And <<BinaryLogicOperator>>
 GeoVisitor -> And : «getChildren» : List<Filter>
 'Return list of size 2. QueryImpl and OrImpl
 
 participant child <<Filter>>
-GeoVisitor -> child : [//Iterate//] «accept» (FilterVisitor, Object)
-'Concrete classes are (GeotoolsFilterAdapterImpl, SolrFilterDelegate)
+GeoVisitor -> child : [//Iterate//] «accept» (FilterVisitor, Object)\n<color gray>(GeotoolsFilterAdapterImpl, SolrFilterDelegate)</color>
 note right
   Additional work here.
   The filter class **BinaryLogicAbstract**
