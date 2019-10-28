@@ -1,0 +1,12 @@
+{
+  "summary": {
+    "title": "Poller Threat Model",
+    "owner": "Connexta LLC",
+    "description": "Models the threats to the Poller microservice."
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [],
+    "reviewer": ""
+  }
+}
