@@ -8,6 +8,7 @@ title DDF Query
 
 SolrCatalogProvider -> SolrMetacardClient : query(QueryRequest)
 
+
 participant GeotoolsFilterAdapterImpl as GeoAdapter  <<FilterAdapter>>
 SolrMetacardClient -> GeoAdapter : «adapt» (Filter, FilterDelegate)\n<color gray>(QueryImpl, SolrFilterDelegate)</color>
 
@@ -30,5 +31,10 @@ return [//Collect//] SolrQuery
 
 participant SolrFilterDelegate <<FilterDelegate<SolrQuery>>>
 GeoVisitor -> SolrFilterDelegate : «and» (List<SolrQuery>)
-[<-- SolrFilterDelegate: SolrQuery
+
+GeoAdapter -> SolrMetacardClient : SolrQuery
+
+SolrMetacardClient -> SolrCatalogProvider : SourceResponse
+
+[<-- SolrCatalogProvider: SourceResponse
 @enduml
