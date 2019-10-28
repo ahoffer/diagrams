@@ -10,7 +10,62 @@
       {
         "title": "Threat Model",
         "thumbnail": "./public/content/images/thumbnail.jpg",
-        "id": 0
+        "id": 0,
+        "diagramJson": {
+          "cells": [
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 928,
+                "y": 227
+              },
+              "angle": 0,
+              "id": "9691e274-d4be-4a59-ad1d-3d217cd65f30",
+              "z": 1,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Poller"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Boundary",
+              "smooth": true,
+              "source": {
+                "x": 30,
+                "y": 30.769230842590332
+              },
+              "target": {
+                "x": 110,
+                "y": 110.76923084259033
+              },
+              "vertices": [
+                {
+                  "x": 77,
+                  "y": 68
+                }
+              ],
+              "id": "647df0b8-aad7-42a9-baba-e05e229330c2",
+              "z": 2,
+              "attrs": {}
+            }
+          ]
+        },
+        "size": {
+          "height": 707,
+          "width": 1414
+        }
       }
     ],
     "reviewer": ""
