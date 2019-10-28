@@ -316,7 +316,7 @@
                   },
                   "attrs": {
                     "text": {
-                      "text": "ack job",
+                      "text": "delete job status",
                       "font-weight": "400",
                       "font-size": "small"
                     }
@@ -386,6 +386,10 @@
                 {
                   "x": 270,
                   "y": 300
+                },
+                {
+                  "x": 220,
+                  "y": 310
                 }
               ],
               "id": "717d6c21-3f04-4ffd-99f8-8be89cdb73ad",
@@ -394,7 +398,7 @@
                   "position": 0.5,
                   "attrs": {
                     "text": {
-                      "text": "IRM",
+                      "text": "add IRM to dataset",
                       "font-weight": "400",
                       "font-size": "small"
                     }
@@ -424,7 +428,7 @@
               "vertices": [
                 {
                   "x": 270,
-                  "y": 420
+                  "y": 390
                 }
               ],
               "id": "8f65e1aa-9fed-4474-9c6a-4326ae43a1ff",
