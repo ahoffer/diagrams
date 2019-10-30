@@ -47,8 +47,8 @@
                 "height": 100
               },
               "position": {
-                "x": 86,
-                "y": 263
+                "x": 19,
+                "y": 278
               },
               "angle": 0,
               "id": "a6531db7-5feb-4e9f-9a52-e2f5022f98ea",
@@ -89,8 +89,7 @@
                   "title": "Queue grows too large",
                   "type": "Denial of service",
                   "description": "This component is stateful. If requests are sent to the Store service faster than the  requests can be pulled from the queue, the queue grows. It could grow to a size where it becomes unavailable due to long response times or the process is killed.",
-                  "mitigation": "Throttle ingest endpoint.",
-                  "$$hashKey": "object:63"
+                  "mitigation": "Throttle ingest endpoint."
                 }
               ],
               "attrs": {
@@ -268,7 +267,7 @@
                   },
                   "attrs": {
                     "text": {
-                      "text": "change dataset state\n(quarantine/final)",
+                      "text": "IRM URL, dataset\npromotoe/quarantine",
                       "font-weight": "400",
                       "font-size": "small"
                     }
